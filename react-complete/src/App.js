@@ -11,6 +11,7 @@ class App extends Component {
       { id: "asdas3", name: "Manu", age: 29 },
       { id: "asdadasas", name: "Stephanie", age: 26 },
     ],
+    showPersons: false,
   };
 
   deletePersonHandler = (personIndex) => {
@@ -42,7 +43,8 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: "white",
+      backgroundColor: "green",
+      color: "white",
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
@@ -66,6 +68,8 @@ class App extends Component {
           })}
         </div>
       );
+
+      style.backgroundColor = "red";
     }
 
     return (
