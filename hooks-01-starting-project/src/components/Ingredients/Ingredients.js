@@ -47,12 +47,16 @@ const Ingredients = () => {
       });
   };
 
+  const filteredIngredientsHandler = (filteredIngredients) => {
+    setIngredients(filteredIngredients);
+  };
+
   return (
     <div className="App">
       <IngredientForm onAddIngredient={addIngredientHandler} />
 
       <section>
-        <Search />
+        <Search onLoadIngredients={filteredIngredientsHandler} />
         <IngredientList ingredients={ingredients} onRemoveItem={() => {}} />
       </section>
     </div>
