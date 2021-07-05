@@ -29,6 +29,12 @@ const Ingredients = () => {
       });
   };
 
+  const removeIngredientHandler = (ingredientId) => {
+    setIngredients((prevIngredients) =>
+      prevIngredients.filter((ingredient) => ingredient.id !== ingredientId)
+    );
+  };
+
   const filteredIngredientsHandler = useCallback((filteredIngredients) => {
     setIngredients(filteredIngredients);
   }, []);
@@ -39,7 +45,10 @@ const Ingredients = () => {
 
       <section>
         <Search onLoadIngredients={filteredIngredientsHandler} />
-        <IngredientList ingredients={ingredients} onRemoveItem={() => {}} />
+        <IngredientList
+          ingredients={ingredients}
+          onRemoveItem={removeIngredientHandler}
+        />
       </section>
     </div>
   );
