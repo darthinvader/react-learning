@@ -25,6 +25,10 @@ const Ingredients = () => {
       });
   }, []);
 
+  useEffect(() => {
+    console.log("Rendering Ingredients", ingredients);
+  }, [ingredients]);
+
   const addIngredientHandler = (ingredient) => {
     fetch(
       "https://react-hooks-update-51300-default-rtdb.europe-west1.firebasedatabase.app/ingredients.json",
