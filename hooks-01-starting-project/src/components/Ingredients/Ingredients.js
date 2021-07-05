@@ -52,6 +52,7 @@ const Ingredients = () => {
       })
       .catch((error) => {
         setError(error.message);
+        setIsLoading(false);
       });
   };
 
@@ -65,7 +66,6 @@ const Ingredients = () => {
         <ErrorModal
           onClose={() => {
             setError(null);
-            setIsLoading(false);
           }}
         >
           {error}
