@@ -21,57 +21,46 @@ const ingredientReducer = (currentIngredients, action) => {
 
 const Ingredients = () => {
   const [ingredients, dispatch] = useReducer(ingredientReducer, []);
-  const { isLoading, error, data, sendRequest } = useHttp();
-  // const [ingredients, setIngredients] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState();
+  const { isLoading, error, data, sendRequest, reqExtra } = useHttp();
+
   useEffect(() => {
     console.log("Rendering Ingredients", ingredients);
   }, [ingredients]);
 
   const addIngredientHandler = useCallback((ingredient) => {
-    // dispatchHttp({ type: "SEND" });
-    // // setIsLoading(true);
-    // fetch(
-    //   "https://react-hooks-update-51300-default-rtdb.europe-west1.firebasedatabase.app/ingredients.json",
-    //   {
-    //     method: "POST",
-    //     body: JSON.stringify(ingredient),
-    //     headers: { "Content-type": "application/json" },
-    //   }
-    // )
-    //   .then((response) => {
-    //     dispatchHttp({ type: "RESPONSE" });
-    //     // setIsLoading(false);
-    //     return response.json();
-    //   })
-    //   .then((responseData) => {
-    //     dispatch({
-    //       type: "ADD",
-    //       ingredient: { id: responseData.name, ...ingredient },
-    //     });
-    //     // setIngredients((prevIngredients) => [
-    //     //   ...prevIngredients,
-    //     //   { id: responseData.name, ...ingredient },
-    //     // ]);
-    //   });
+    sendRequest(
+      "https://react-hooks-update-51300-default-rtdb.europe-west1.firebasedatabase.app/ingredients.json",
+      "POST",
+      JSON.stringify(ingredient),
+      ingredient
+    );
   }, []);
 
   const removeIngredientHandler = useCallback(
     (ingredientId) => {
-      // dispatchHttp({ type: "SEND" });
-      // setIsLoading(true);
       sendRequest(
         `https://react-hooks-update-51300-default-rtdb.europe-west1.firebasedatabase.app/ingredients/${ingredientId}.json`,
-        "DELETE"
+        "DELETE",
+        null,
+        ingredientId
       );
     },
     [sendRequest]
   );
 
+  useEffect(() => {
+    if (reqExtra) {
+      dispatch({ type: "DELETE", id: reqExtra });
+    } else {
+      dispatch({
+        type: "ADD",
+        ingredient: { id: data.name, ...reqExtra },
+      });
+    }
+  }, [data, reqExtra]);
+
   const filteredIngredientsHandler = useCallback((filteredIngredients) => {
     dispatch({ type: "SET", ingredients: filteredIngredients });
-    // setIngredients(filteredIngredients);
   }, []);
 
   const clearError = useCallback(() => {
