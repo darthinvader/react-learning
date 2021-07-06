@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./App.css";
 import Radium from "radium";
 import Person from "./Person/Person";
-import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -15,7 +14,7 @@ const App = () => {
   const deletePersonHandler = (personIndex) => {
     const newPersons = [...persons];
     newPersons.splice(personIndex, 1);
-    setPersons({ persons: newPersons });
+    setPersons(newPersons);
   };
 
   const nameChangedHandler = (event, id) => {
@@ -52,6 +51,7 @@ const App = () => {
   let personsToShow = null;
 
   if (showPersons) {
+    console.log(persons);
     personsToShow = (
       <div>
         {persons.map((person, index) => {
