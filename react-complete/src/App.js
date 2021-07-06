@@ -56,14 +56,13 @@ const App = () => {
       <div>
         {persons.map((person, index) => {
           return (
-            <ErrorBoundary key={person.id}>
-              <Person
-                click={() => deletePersonHandler(index)}
-                name={person.name}
-                age={person.age}
-                changed={(event) => nameChangedHandler(event, person.id)}
-              />
-            </ErrorBoundary>
+            <Person
+              click={() => deletePersonHandler(index)}
+              name={person.name}
+              age={person.age}
+              key={person.id}
+              changed={(event) => nameChangedHandler(event, person.id)}
+            />
           );
         })}
       </div>
