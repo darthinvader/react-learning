@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import "./App.css";
 import Radium from "radium";
 import Person from "./Person/Person";
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { id: "asdas", name: "max", age: 28 },
+    { id: "asdas", name: "Max", age: 28 },
     { id: "asdas3", name: "Manu", age: 29 },
     { id: "asdadasas", name: "Stephanie", age: 26 },
   ]);
   const [showPersons, setShowPersons] = useState(false);
 
   const deletePersonHandler = (personIndex) => {
-    const newPersons = [...newPersons];
+    const newPersons = [...persons];
     newPersons.splice(personIndex, 1);
     setPersons({ persons: newPersons });
   };
@@ -55,13 +56,14 @@ const App = () => {
       <div>
         {persons.map((person, index) => {
           return (
-            <Person
-              click={() => deletePersonHandler(index)}
-              name={person.name}
-              age={person.age}
-              key={person.id}
-              changed={(event) => nameChangedHandler(event, person.id)}
-            />
+            <ErrorBoundary key={person.id}>
+              <Person
+                click={() => deletePersonHandler(index)}
+                name={person.name}
+                age={person.age}
+                changed={(event) => nameChangedHandler(event, person.id)}
+              />
+            </ErrorBoundary>
           );
         })}
       </div>
