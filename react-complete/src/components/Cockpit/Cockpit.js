@@ -6,10 +6,11 @@ const cockpit = (props) => {
   useEffect(() => {
     console.log("[Cockpit.js] useEffect");
     //Http request...
-    setTimeout(() => {
-      alert("Saved data to cloud!!!");
-    }, 1000);
-  }, []);
+    console.log(props);
+    return () => {
+      console.log(props);
+    };
+  }, [props]);
   if (props.showPersons) {
     btnClass = classes.red;
   }
