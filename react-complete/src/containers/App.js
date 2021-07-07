@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import classes from "./App.css";
-import Radium from "radium";
 import Persons from "../components/Persons/persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 
@@ -63,4 +62,4 @@ const App = () => {
   );
 };
 
-export default Radium(App);
+export default App;

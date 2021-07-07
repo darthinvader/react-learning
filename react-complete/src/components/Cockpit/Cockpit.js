@@ -6,7 +6,6 @@ const cockpit = (props) => {
   if (props.showPersons) {
     btnClass = classes.red;
   }
-  console.log(btnClass);
 
   const assignedClasses = [];
   if (props.persons.length <= 2) {
