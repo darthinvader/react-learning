@@ -3,7 +3,7 @@ import classes from "./App.css";
 import Persons from "../components/Persons/persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 
-const App = () => {
+const App = (props) => {
   const [persons, setPersons] = useState([
     { id: "asdas", name: "Max", age: 28 },
     { id: "asdas3", name: "Manu", age: 29 },
@@ -52,6 +52,7 @@ const App = () => {
   return (
     <div className={classes.App}>
       <Cockpit
+        title={props.appTitle}
         persons={persons}
         showPersons={showPersons}
         style={null}
