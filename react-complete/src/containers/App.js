@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import classes from "./App.css";
 import Radium from "radium";
 import Persons from "../components/Persons/persons";
 import Cockpit from "../components/Cockpit/Cockpit";
@@ -51,7 +51,7 @@ const App = () => {
   }
 
   return (
-    <div className="App">
+    <div className={classes.App}>
       <Cockpit persons={persons} style={null} clicked={togglePersonsHandler} />
       {personsToShow}
     </div>
