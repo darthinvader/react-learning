@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Radium from "radium";
 import Persons from "../components/Persons/persons";
+import Cockpit from "../components/Cockpit/Cockpit";
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -35,19 +36,6 @@ const App = () => {
     setShowPersons(doesShow);
   };
 
-  const style = {
-    backgroundColor: "green",
-    color: "white",
-    font: "inherit",
-    border: "1px solid blue",
-    padding: "8px",
-    cursor: "pointer",
-    ":hover": {
-      backgroundColor: "lightgreen",
-      color: "black",
-    },
-  };
-
   let personsToShow = null;
 
   if (showPersons) {
@@ -60,28 +48,11 @@ const App = () => {
         />
       </div>
     );
-    style.backgroundColor = "red";
-    style[":hover"] = {
-      backgroundColor: "salmon",
-      color: "black",
-    };
-  }
-
-  const classes = [];
-  if (persons.length <= 2) {
-    classes.push("red");
-  }
-  if (persons.length <= 1) {
-    classes.push("bold");
   }
 
   return (
     <div className="App">
-      <h1>Hi I'm a react App</h1>
-      <p className={classes.join(" ")}>This is really working!</p>
-      <button style={style} onClick={togglePersonsHandler}>
-        Toggle Persons
-      </button>
+      <Cockpit persons={persons} style={null} clicked={togglePersonsHandler} />
       {personsToShow}
     </div>
   );
