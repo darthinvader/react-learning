@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Radium from "radium";
-import Person from "./Person/Person";
+import Person from "../components/Persons/Person/Person";
 
 const App = () => {
   const [persons, setPersons] = useState([
