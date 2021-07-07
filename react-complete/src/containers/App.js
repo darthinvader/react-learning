@@ -52,7 +52,12 @@ const App = () => {
 
   return (
     <div className={classes.App}>
-      <Cockpit persons={persons} style={null} clicked={togglePersonsHandler} />
+      <Cockpit
+        persons={persons}
+        showPersons={showPersons}
+        style={null}
+        clicked={togglePersonsHandler}
+      />
       {personsToShow}
     </div>
   );
