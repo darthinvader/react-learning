@@ -15,9 +15,6 @@ const cockpit = (props) => {
     assignedClasses.push(classes.bold);
   }
 
-  console.log(props.title);
-  console.log(props.showPersons);
-  console.log(props.persons);
   return (
     <div className={classes.Cockpit}>
       <h1>{props.title}</h1>

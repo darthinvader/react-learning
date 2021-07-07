@@ -4,14 +4,19 @@ import Persons from "../components/Persons/persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 
 class ClassApp extends Component {
-  state = {
-    persons: [
-      { id: "asdas", name: "Max", age: 28 },
-      { id: "asdas3", name: "Manu", age: 29 },
-      { id: "asdadasas", name: "Stephanie", age: 26 },
-    ],
-    showPersons: false,
-  };
+  constructor(props) {
+    super(props);
+    console.log("[ClassApp.js] constructor");
+
+    this.state = {
+      persons: [
+        { id: "asdas", name: "Max", age: 28 },
+        { id: "asdas3", name: "Manu", age: 29 },
+        { id: "asdadasas", name: "Stephanie", age: 26 },
+      ],
+      showPersons: false,
+    };
+  }
 
   deletePersonHandler = (personIndex) => {
     const newPersons = [...this.state.persons];
