@@ -23,6 +23,10 @@ class ClassApp extends Component {
     return state;
   }
 
+  componentDidMount() {
+    console.log("[ClassApp.js] Component Mount");
+  }
+
   deletePersonHandler = (personIndex) => {
     const newPersons = [...this.state.persons];
     newPersons.splice(personIndex, 1);
