@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Radium from "radium";
-import Person from "../components/Persons/Person/Person";
+import Persons from "../components/Persons/persons";
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -51,20 +51,13 @@ const App = () => {
   let personsToShow = null;
 
   if (showPersons) {
-    console.log(persons);
     personsToShow = (
       <div>
-        {persons.map((person, index) => {
-          return (
-            <Person
-              click={() => deletePersonHandler(index)}
-              name={person.name}
-              age={person.age}
-              key={person.id}
-              changed={(event) => nameChangedHandler(event, person.id)}
-            />
-          );
-        })}
+        <Persons
+          persons={persons}
+          clicked={deletePersonHandler}
+          changed={nameChangedHandler}
+        />
       </div>
     );
     style.backgroundColor = "red";
