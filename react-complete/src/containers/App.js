@@ -55,7 +55,6 @@ const App = (props) => {
         title={props.appTitle}
         persons={persons}
         showPersons={showPersons}
-        style={null}
         clicked={togglePersonsHandler}
       />
       {personsToShow}
