@@ -18,6 +18,11 @@ class ClassApp extends Component {
     };
   }
 
+  static getDerivedStateFromProps(props, state) {
+    console.log("[ClassApp.js] getDerivedStateFromProps", props);
+    return state;
+  }
+
   deletePersonHandler = (personIndex) => {
     const newPersons = [...this.state.persons];
     newPersons.splice(personIndex, 1);
@@ -43,6 +48,8 @@ class ClassApp extends Component {
   };
 
   render() {
+    console.log("[ClassApp.js] Render");
+
     let personsToShow = null;
 
     if (this.state.showPersons) {
