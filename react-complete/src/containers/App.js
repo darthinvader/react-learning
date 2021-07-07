@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import classes from "./App.css";
 import Persons from "../components/Persons/persons";
 import Cockpit from "../components/Cockpit/Cockpit";
@@ -30,10 +30,10 @@ const App = (props) => {
     setPersons(newPersons);
   };
 
-  const togglePersonsHandler = () => {
+  const togglePersonsHandler = useCallback(() => {
     const doesShow = !showPersons;
     setShowPersons(doesShow);
-  };
+  }, [showPersons]);
 
   let personsToShow = null;
 
@@ -53,7 +53,7 @@ const App = (props) => {
     <div className={classes.App}>
       <Cockpit
         title={props.appTitle}
-        persons={persons}
+        personsLength={persons.length}
         showPersons={showPersons}
         clicked={togglePersonsHandler}
       />
