@@ -6,7 +6,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import ClassApp from "./containers/ClassApp";
 
 ReactDOM.render(
-  <ClassApp appTitle="Person Manager" />,
+  <App appTitle="Person Manager" />,
   document.getElementById("root")
 );
 registerServiceWorker();
