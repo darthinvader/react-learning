@@ -12,6 +12,7 @@ const App = (props) => {
     { id: "asdadasas", name: "Stephanie", age: 26 },
   ]);
   const [showPersons, setShowPersons] = useState(false);
+  const [counter, setCounter] = useState(0);
 
   const deletePersonHandler = (personIndex) => {
     const newPersons = [...persons];
@@ -30,6 +31,7 @@ const App = (props) => {
     newPersons[personIndex] = person;
 
     setPersons(newPersons);
+    setCounter((prevState, props) => prevState + 1);
   };
 
   const togglePersonsHandler = useCallback(() => {

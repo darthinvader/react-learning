@@ -1,7 +1,6 @@
 import React from "react";
 import Person from "./Person.css";
 import withClassDifferent from "../../../hoc/WithClassDifferent";
-import Aux from "../../../hoc/Auxiliary";
 
 const person = (props) => (
   <React.Fragment>
