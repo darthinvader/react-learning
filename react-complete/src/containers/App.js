@@ -4,6 +4,7 @@ import Persons from "../components/Persons/persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 import WithClass from "../hoc/WithClass";
 import withClassDifferent from "../hoc/WithClassDifferent";
+import AuthContext from "../context/auth-context";
 
 const App = (props) => {
   const [persons, setPersons] = useState([
@@ -52,7 +53,6 @@ const App = (props) => {
           persons={persons}
           clicked={deletePersonHandler}
           changed={nameChangedHandler}
-          isAuthenticated={authenticated}
         />
       </div>
     );
@@ -60,14 +60,20 @@ const App = (props) => {
 
   return (
     <React.Fragment>
-      <Cockpit
-        title={props.appTitle}
-        personsLength={persons.length}
-        showPersons={showPersons}
-        clicked={togglePersonsHandler}
-        login={loginHandler}
-      />
-      {personsToShow}
+      <AuthContext.Provider
+        value={{
+          authenticated: authenticated,
+          login: loginHandler,
+        }}
+      >
+        <Cockpit
+          title={props.appTitle}
+          personsLength={persons.length}
+          showPersons={showPersons}
+          clicked={togglePersonsHandler}
+        />
+        {personsToShow}
+      </AuthContext.Provider>
     </React.Fragment>
   );
 };
