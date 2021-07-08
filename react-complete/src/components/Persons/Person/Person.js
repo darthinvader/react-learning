@@ -4,8 +4,10 @@ import withClassDifferent from "../../../hoc/WithClassDifferent";
 import PropTypes from "prop-types";
 
 const person = (props) => {
+  let inputElementRef = React.createRef();
+
   useEffect(() => {
-    this.inputElement.focus();
+    inputElementRef.current.focus();
   }, []);
 
   return (
@@ -16,9 +18,7 @@ const person = (props) => {
       <p>{props.children}</p>
       <input
         type="text"
-        ref={(inputEl) => {
-          this.inputElement = inputEl;
-        }}
+        ref={inputElementRef}
         onChange={props.changed}
         value={props.name}
       />
