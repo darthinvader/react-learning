@@ -1,5 +1,7 @@
 import React from "react";
 import classes from "./BurgerIngredient.module.css";
+import PropTypes from "prop-types";
+
 const burgerIngredient = (props) => {
   let ingredient = null;
 
@@ -28,7 +30,12 @@ const burgerIngredient = (props) => {
       ingredient = <div className={classes.Bacon}></div>;
       break;
     default:
+      ingredient = null;
   }
+};
+
+BurgerIngredient.propTypes = {
+  type: PropTypes.string,
 };
 
 export default BurgerIngredient;
