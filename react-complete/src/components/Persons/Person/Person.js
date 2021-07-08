@@ -1,22 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import Person from "./Person.css";
 import withClassDifferent from "../../../hoc/WithClassDifferent";
 import PropTypes from "prop-types";
 import AuthContext from "../../../context/auth-context";
 const person = (props) => {
   let inputElementRef = React.createRef();
-
+  const authContext = useContext(AuthContext);
   useEffect(() => {
     inputElementRef.current.focus();
   }, []);
 
   return (
     <React.Fragment>
-      <AuthContext.Consumer>
-        {(context) =>
-          context.authenticated ? <p>authenticated</p> : <p>Please Login</p>
-        }
-      </AuthContext.Consumer>
+      {authContext.authenticated ? <p>authenticated</p> : <p>Please Login</p>}
       <p onClick={props.click}>
         I'm {props.name} and I am {props.age} years old!
       </p>

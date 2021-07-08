@@ -15,6 +15,7 @@ const App = (props) => {
   const [showPersons, setShowPersons] = useState(false);
   const [counter, setCounter] = useState(0);
   const [authenticated, setAuthenticated] = useState(false);
+
   const deletePersonHandler = (personIndex) => {
     const newPersons = [...persons];
     newPersons.splice(personIndex, 1);
