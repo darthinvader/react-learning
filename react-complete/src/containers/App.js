@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import classes from "./App.css";
 import Persons from "../components/Persons/persons";
 import Cockpit from "../components/Cockpit/Cockpit";
+import WithClass from "../hoc/WithClass";
 
 const App = (props) => {
   const [persons, setPersons] = useState([
@@ -50,7 +51,7 @@ const App = (props) => {
   }
 
   return (
-    <div className={classes.App}>
+    <WithClass classes={classes.App}>
       <Cockpit
         title={props.appTitle}
         personsLength={persons.length}
@@ -58,7 +59,7 @@ const App = (props) => {
         clicked={togglePersonsHandler}
       />
       {personsToShow}
-    </div>
+    </WithClass>
   );
 };
 
