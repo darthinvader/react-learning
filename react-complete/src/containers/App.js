@@ -3,6 +3,7 @@ import classes from "./App.css";
 import Persons from "../components/Persons/persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 import WithClass from "../hoc/WithClass";
+import withClassDifferent from "../hoc/WithClassDifferent";
 
 const App = (props) => {
   const [persons, setPersons] = useState([
@@ -51,7 +52,7 @@ const App = (props) => {
   }
 
   return (
-    <WithClass classes={classes.App}>
+    <React.Fragment>
       <Cockpit
         title={props.appTitle}
         personsLength={persons.length}
@@ -59,8 +60,8 @@ const App = (props) => {
         clicked={togglePersonsHandler}
       />
       {personsToShow}
-    </WithClass>
+    </React.Fragment>
   );
 };
 
-export default App;
+export default withClassDifferent(App, classes.App);
