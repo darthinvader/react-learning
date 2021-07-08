@@ -13,7 +13,7 @@ const App = (props) => {
   ]);
   const [showPersons, setShowPersons] = useState(false);
   const [counter, setCounter] = useState(0);
-
+  const [authenticated, setAuthenticated] = useState(false);
   const deletePersonHandler = (personIndex) => {
     const newPersons = [...persons];
     newPersons.splice(personIndex, 1);
@@ -39,6 +39,10 @@ const App = (props) => {
     setShowPersons(doesShow);
   }, [showPersons]);
 
+  const loginHandler = () => {
+    setAuthenticated(true);
+  };
+
   let personsToShow = null;
 
   if (showPersons) {
@@ -48,6 +52,7 @@ const App = (props) => {
           persons={persons}
           clicked={deletePersonHandler}
           changed={nameChangedHandler}
+          isAuthenticated={authenticated}
         />
       </div>
     );
@@ -60,6 +65,7 @@ const App = (props) => {
         personsLength={persons.length}
         showPersons={showPersons}
         clicked={togglePersonsHandler}
+        login={loginHandler}
       />
       {personsToShow}
     </React.Fragment>
