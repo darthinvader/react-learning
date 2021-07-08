@@ -31,11 +31,13 @@ const burgerIngredient = (props) => {
       break;
     default:
       ingredient = null;
+      break;
   }
+  return ingredient;
 };
 
-BurgerIngredient.propTypes = {
+burgerIngredient.propTypes = {
   type: PropTypes.string,
 };
 
-export default BurgerIngredient;
+export default burgerIngredient;
