@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import axios from "../../axios";
 
 import Post from "../../components/Post/Post";
-import FullPost from "../../components/FullPost/FullPost";
-import NewPost from "../../components/NewPost/NewPost";
+import FullPost from "./FullPost/FullPost";
+import NewPost from "./NewPost/NewPost";
+
 import "./Blog.css";
 
 const Blog = () => {
@@ -60,12 +61,6 @@ const Blog = () => {
         </nav>
       </header>
       <section className="Posts">{postElements}</section>
-      <section>
-        <FullPost id={selectedPostId} />
-      </section>
-      <section>
-        <NewPost />
-      </section>
     </div>
   );
 };
