@@ -1,5 +1,7 @@
 import React from "react";
 // import axios from "axios";
+import { Route } from "react-router-dom";
+
 import Posts from "../Posts/Posts";
 import "./Blog.css";
 
@@ -10,15 +12,16 @@ const Blog = () => {
         <nav>
           <ul>
             <li>
-              <a href="/">Home</a>
+              <a href="/home">Home</a>
             </li>
             <li>
-              <a href="/">New Post</a>
+              <a href="/new-post">New Post</a>
             </li>
           </ul>
         </nav>
       </header>
-      <Posts />
+      <Route path="/" exact render={() => <h1>Home</h1>} />
+      <Route path="/" render={() => <h1>Home2</h1>} />
     </div>
   );
 };
