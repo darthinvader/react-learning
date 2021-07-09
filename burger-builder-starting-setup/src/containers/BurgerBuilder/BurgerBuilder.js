@@ -18,6 +18,17 @@ const BurgerBuilder = (props) => {
   });
 
   const [totalPrice, setTotalPrice] = useState(4);
+  const [purchasable, setPurchasable] = useState(false);
+
+  const updatePurchaseState = (updatedIngredients) => {
+    const sum = Object.keys(updatedIngredients)
+      .map((key) => {
+        return updatedIngredients[key];
+      })
+      .reduce((acc, val) => (acc += val), 0);
+
+    setPurchasable(sum > 0);
+  };
 
   const addIngredientHandler = (type) => {
     const updatedCount = ingredients[type] + 1;
@@ -29,6 +40,8 @@ const BurgerBuilder = (props) => {
 
     const priceAddition = INGREDIENT_PRICES[type];
     setTotalPrice(totalPrice + priceAddition);
+
+    setPurchasable(true);
   };
   const removeIngridientHandler = (type) => {
     if (ingredients[type] === 0) return;
@@ -41,6 +54,7 @@ const BurgerBuilder = (props) => {
 
     const priceSubtraction = INGREDIENT_PRICES[type];
     setTotalPrice(totalPrice - priceSubtraction);
+    updatePurchaseState(updatedIngredients);
   };
 
   const disabledInfo = {
@@ -57,6 +71,7 @@ const BurgerBuilder = (props) => {
         ingredientAdded={addIngredientHandler}
         ingredientRemoved={removeIngridientHandler}
         disabled={disabledInfo}
+        purchasable={purchasable}
         price={totalPrice}
       />
     </Fragment>
