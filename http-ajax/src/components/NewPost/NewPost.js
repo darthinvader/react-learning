@@ -1,11 +1,11 @@
-import React, { setState } from "react";
+import React, { useState } from "react";
 
 import "./NewPost.css";
 
 const NewPost = () => {
-  const [title, setTitle] = setState("");
-  const [content, setContent] = setState("");
-  const [author, setAuthor] = setState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [author, setAuthor] = useState("");
 
   return (
     <div className="NewPost">
