@@ -19,7 +19,6 @@ const Blog = () => {
           return { ...post, author: "Max" };
         });
         setPosts(updatedPosts);
-        // console.log(response);
       })
       .catch((error) => {
         setError(true);
