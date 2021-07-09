@@ -57,6 +57,7 @@ const BurgerBuilder = (props) => {
         ingredientAdded={addIngredientHandler}
         ingredientRemoved={removeIngridientHandler}
         disabled={disabledInfo}
+        price={totalPrice}
       />
     </Fragment>
   );
