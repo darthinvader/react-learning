@@ -42,12 +42,21 @@ const BurgerBuilder = (props) => {
     const priceSubtraction = INGREDIENT_PRICES[type];
     setTotalPrice(totalPrice - priceSubtraction);
   };
+
+  const disabledInfo = {
+    ...ingredients,
+  };
+  for (let key in disabledInfo) {
+    disabledInfo[key] = disabledInfo[key] <= 0;
+  }
+
   return (
     <Fragment>
       <Burger ingredients={ingredients} />
       <BuildControls
         ingredientAdded={addIngredientHandler}
         ingredientRemoved={removeIngridientHandler}
+        disabled={disabledInfo}
       />
     </Fragment>
   );
