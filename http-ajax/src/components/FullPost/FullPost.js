@@ -7,21 +7,17 @@ const FullPost = (props) => {
   const [loadedPost, setLoadedPost] = useState(null);
   useEffect(() => {
     if (props.id) {
-      axios
-        .get(`https://jsonplaceholder.typicode.com/posts/${props.id}`)
-        .then((response) => {
-          // console.log(response);
-          setLoadedPost(response.data);
-        });
+      axios.get(`/posts/${props.id}`).then((response) => {
+        // console.log(response);
+        setLoadedPost(response.data);
+      });
     }
   }, [props]);
 
   const deletePostHandler = () => {
-    axios
-      .delete(`https://jsonplaceholder.typicode.com/posts/${props.id}`)
-      .then((response) => {
-        console.log(response);
-      });
+    axios.delete(`/posts/${props.id}`).then((response) => {
+      console.log(response);
+    });
   };
 
   let post = <p style={{ textAlign: "center" }}>Please select a Post!</p>;
