@@ -9,32 +9,41 @@ import "./Blog.css";
 const Blog = () => {
   const [posts, setPosts] = useState([]);
   const [selectedPostId, setSelectedPostId] = useState(null);
-
+  const [error, setError] = useState(false);
   useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
-      const currPosts = response.data.slice(0, 4);
-      const updatedPosts = currPosts.map((post) => {
-        return { ...post, author: "Max" };
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => {
+        const currPosts = response.data.slice(0, 4);
+        const updatedPosts = currPosts.map((post) => {
+          return { ...post, author: "Max" };
+        });
+        setPosts(updatedPosts);
+        // console.log(response);
+      })
+      .catch((error) => {
+        setError(true);
       });
-      setPosts(updatedPosts);
-      // console.log(response);
-    });
   }, []);
 
   const postSelected = (id) => {
     setSelectedPostId(id);
   };
-
-  const postElements = posts.map((post) => {
-    return (
-      <Post
-        key={post.id}
-        title={post.title}
-        author={post.author}
-        clicked={() => postSelected(post.id)}
-      />
-    );
-  });
+  let postElements = (
+    <p style={{ textAlign: "center" }}>Something went wrong</p>
+  );
+  if (!error) {
+    postElements = posts.map((post) => {
+      return (
+        <Post
+          key={post.id}
+          title={post.title}
+          author={post.author}
+          clicked={() => postSelected(post.id)}
+        />
+      );
+    });
+  }
 
   return (
     <div>
