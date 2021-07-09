@@ -32,8 +32,12 @@ const BurgerBuilder = (props) => {
     setPurchasable(sum > 0);
   };
 
-  const purchaseHandle = () => {
+  const purchaseHandler = () => {
     setPurchasing(true);
+  };
+
+  const purchaseCancelHandler = () => {
+    setPurchasing(false);
   };
 
   const addIngredientHandler = (type) => {
@@ -72,7 +76,7 @@ const BurgerBuilder = (props) => {
 
   return (
     <Fragment>
-      <Modal show={purchasing}>
+      <Modal show={purchasing} modalClosed={purchaseCancelHandler}>
         <OrderSummary ingredients={ingredients} />
       </Modal>
       <Burger ingredients={ingredients} />
@@ -81,7 +85,7 @@ const BurgerBuilder = (props) => {
         ingredientRemoved={removeIngridientHandler}
         disabled={disabledInfo}
         purchasable={purchasable}
-        ordered={purchaseHandle}
+        ordered={purchaseHandler}
         price={totalPrice}
       />
     </Fragment>
