@@ -20,6 +20,7 @@ const BurgerBuilder = (props) => {
 
   const [totalPrice, setTotalPrice] = useState(4);
   const [purchasable, setPurchasable] = useState(false);
+  const [purchasing, setPurchasing] = useState(false);
 
   const updatePurchaseState = (updatedIngredients) => {
     const sum = Object.keys(updatedIngredients)
@@ -29,6 +30,10 @@ const BurgerBuilder = (props) => {
       .reduce((acc, val) => (acc += val), 0);
 
     setPurchasable(sum > 0);
+  };
+
+  const purchaseHandle = () => {
+    setPurchasing(true);
   };
 
   const addIngredientHandler = (type) => {
@@ -67,7 +72,7 @@ const BurgerBuilder = (props) => {
 
   return (
     <Fragment>
-      <Modal>
+      <Modal show={purchasing}>
         <OrderSummary ingredients={ingredients} />
       </Modal>
       <Burger ingredients={ingredients} />
@@ -76,6 +81,7 @@ const BurgerBuilder = (props) => {
         ingredientRemoved={removeIngridientHandler}
         disabled={disabledInfo}
         purchasable={purchasable}
+        ordered={purchaseHandle}
         price={totalPrice}
       />
     </Fragment>
