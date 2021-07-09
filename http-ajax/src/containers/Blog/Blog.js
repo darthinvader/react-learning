@@ -11,13 +11,17 @@ const Blog = () => {
 
   useEffect(() => {
     axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
-      setPosts(response.data);
+      const currPosts = response.data.slice(0, 4);
+      const updatedPosts = currPosts.map((post) => {
+        return { ...post, author: "Max" };
+      });
+      setPosts(updatedPosts);
       // console.log(response);
     });
   }, []);
 
   const postElements = posts.map((post) => {
-    return <Post key={post.id} title={post.title} />;
+    return <Post key={post.id} title={post.title} author={post.author} />;
   });
 
   return (
