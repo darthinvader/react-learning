@@ -30,11 +30,25 @@ const BurgerBuilder = (props) => {
     const priceAddition = INGREDIENT_PRICES[type];
     setTotalPrice(totalPrice + priceAddition);
   };
-  const removeIngridientHandler = (type) => {};
+  const removeIngridientHandler = (type) => {
+    if (ingredients[type] === 0) return;
+    const updatedCount = ingredients[type] - 1;
+    const updatedIngredients = {
+      ...ingredients,
+    };
+    setIngredients(updatedIngredients);
+    updatedIngredients[type] = updatedCount;
+
+    const priceSubtraction = INGREDIENT_PRICES[type];
+    setTotalPrice(totalPrice - priceSubtraction);
+  };
   return (
     <Fragment>
       <Burger ingredients={ingredients} />
-      <BuildControls ingredientAdded={addIngredientHandler} />
+      <BuildControls
+        ingredientAdded={addIngredientHandler}
+        ingredientRemoved={removeIngridientHandler}
+      />
     </Fragment>
   );
 };
