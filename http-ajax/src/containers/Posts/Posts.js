@@ -3,11 +3,12 @@ import axios from "axios";
 import Post from "../../components/Post/Post";
 import classes from "./Posts.module.css";
 
-const Posts = () => {
+const Posts = (props) => {
   const [posts, setPosts] = useState([]);
   const [selectedPostId, setSelectedPostId] = useState(null);
 
   useEffect(() => {
+    console.log(props);
     axios
       .get("/posts")
       .then((response) => {

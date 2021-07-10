@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import "./NewPost.css";
 
-const NewPost = () => {
+const NewPost = (props) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [author, setAuthor] = useState("Max");
+
+  useEffect(() => {
+    console.log(props);
+  }, []);
 
   const postDataHandler = () => {
     const data = {
