@@ -6,8 +6,9 @@ import "./FullPost.css";
 const FullPost = (props) => {
   const [loadedPost, setLoadedPost] = useState(null);
   useEffect(() => {
-    if (props.id) {
-      axios.get(`/posts/${props.id}`).then((response) => {
+    console.log(props);
+    if (props.match.params.id) {
+      axios.get(`/posts/${props.match.params.id}`).then((response) => {
         // console.log(response);
         setLoadedPost(response.data);
       });

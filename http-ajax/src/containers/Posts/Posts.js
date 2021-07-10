@@ -10,7 +10,6 @@ const Posts = (props) => {
   const [selectedPostId, setSelectedPostId] = useState(null);
 
   useEffect(() => {
-    console.log(props);
     axios
       .get("/posts")
       .then((response) => {
