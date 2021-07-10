@@ -9,7 +9,7 @@ const NewPost = (props) => {
   const [author, setAuthor] = useState("Max");
 
   useEffect(() => {
-    console.log(props);
+    // console.log(props);
   }, [props]);
 
   const postDataHandler = () => {
