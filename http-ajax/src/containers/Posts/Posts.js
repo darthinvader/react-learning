@@ -22,7 +22,7 @@ const Posts = (props) => {
         // setError(true);
         console.log(error);
       });
-  }, []);
+  }, [props]);
 
   const postSelected = (id) => {
     setSelectedPostId(id);

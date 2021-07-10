@@ -1,6 +1,6 @@
 import React from "react";
 // import axios from "axios";
-import { Route, Link } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
 
 import Posts from "../Posts/Posts";
 import "./Blog.css";
@@ -13,10 +13,17 @@ const Blog = () => {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink
+                to="/"
+                exact
+                activeClassName="my-active"
+                activeStyle={{ color: "#fa923f", textDecoration: "underline" }}
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to={{
                   pathname: "/new-post",
                   hash: "#submit",
@@ -24,7 +31,7 @@ const Blog = () => {
                 }}
               >
                 New Post
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>

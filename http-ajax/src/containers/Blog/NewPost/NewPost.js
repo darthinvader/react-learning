@@ -10,7 +10,7 @@ const NewPost = (props) => {
 
   useEffect(() => {
     console.log(props);
-  }, []);
+  }, [props]);
 
   const postDataHandler = () => {
     const data = {
