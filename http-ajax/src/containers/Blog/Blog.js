@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-// import axios from "axios";
+import React, { useState, Suspense, lazy } from "react";
 import { Route, NavLink, Switch, Redirect } from "react-router-dom";
 
 import Posts from "../Posts/Posts";
 import "./Blog.css";
-import NewPost from "./NewPost/NewPost";
+const NewPost = lazy(() => import("./NewPost/NewPost"));
 
 const Blog = () => {
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(true);
 
   return (
     <div className="Blog">
@@ -40,13 +39,17 @@ const Blog = () => {
       </header>
       {/* <Route path="/" exact render={() => <h1>Home</h1>} />
       <Route path="/" render={() => <h1>Home2</h1>} /> */}
-
+      {auth && (
+        <Suspense fallback={<div>Fuck</div>}>
+          <Route path="/new-post" exact component={NewPost} />
+        </Suspense>
+      )}
       <Switch>
-        {auth && <Route path="/new-post" component={NewPost} />}
         <Route path="/posts" component={Posts} />
-        {/* Catch all route below (404 cases :P) */}
-        <Route render={() => <h1>Not Found!</h1>} />
-        {/* <Redirect from="/" to="/posts" /> */}
+        <Redirect from="/" to="/posts" />
+        {/* Catch all route below (404 cases :P)
+        <Route render={() => <h1>Not Found!</h1>} /> */}
+
         {/* <Route path="/" component={Posts} /> */}
       </Switch>
     </div>
