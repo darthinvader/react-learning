@@ -3,6 +3,8 @@ import axios from "axios";
 
 import Post from "../../components/Post/Post";
 import classes from "./Posts.module.css";
+import { Route } from "react-router";
+import FullPost from "../Blog/FullPost/FullPost";
 
 const Posts = (props) => {
   const [posts, setPosts] = useState([]);
@@ -25,7 +27,7 @@ const Posts = (props) => {
   }, [props]);
 
   const postSelectedHandler = (id) => {
-    props.history.push({ pathname: "/" + id });
+    props.history.push({ pathname: "/posts/" + id });
     // setSelectedPostId(id);
   };
 
@@ -44,7 +46,13 @@ const Posts = (props) => {
     );
   });
 
-  return <section className={classes.Posts}>{postElements}</section>;
+  return (
+    <div>
+      <section className={classes.Posts}>{postElements}</section>
+
+      <Route path={props.match.url + "/:id"} exact component={FullPost} />
+    </div>
+  );
 };
 
 export default Posts;
