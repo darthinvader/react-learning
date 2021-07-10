@@ -39,12 +39,19 @@ const Blog = () => {
       </header>
       {/* <Route path="/" exact render={() => <h1>Home</h1>} />
       <Route path="/" render={() => <h1>Home2</h1>} /> */}
-      {auth && (
-        <Suspense fallback={<div>Fuck</div>}>
-          <Route path="/new-post" exact component={NewPost} />
-        </Suspense>
-      )}
+
       <Switch>
+        {auth && (
+          <Route
+            path="/new-post"
+            exact
+            render={() => (
+              <Suspense fallback={<div>I am not returning properly</div>}>
+                <NewPost />
+              </Suspense>
+            )}
+          />
+        )}
         <Route path="/posts" component={Posts} />
         <Redirect from="/" to="/posts" />
         {/* Catch all route below (404 cases :P)
