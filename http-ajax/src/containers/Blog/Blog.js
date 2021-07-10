@@ -46,7 +46,7 @@ const Blog = () => {
             path="/new-post"
             exact
             render={() => (
-              <Suspense fallback={<div>I am not returning properly</div>}>
+              <Suspense fallback={<div>Loading...</div>}>
                 <NewPost />
               </Suspense>
             )}

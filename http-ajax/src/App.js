@@ -4,7 +4,8 @@ import Blog from "./containers/Blog/Blog";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    // basename of url example
+    <BrowserRouter basename="/my-app">
       <div className="App">
         <Blog />
       </div>
