@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import axios from "axios";
 import { Route, NavLink, Switch, Redirect } from "react-router-dom";
 
@@ -7,6 +7,8 @@ import "./Blog.css";
 import NewPost from "./NewPost/NewPost";
 
 const Blog = () => {
+  const [auth, setAuth] = useState(false);
+
   return (
     <div className="Blog">
       <header>
@@ -40,7 +42,7 @@ const Blog = () => {
       <Route path="/" render={() => <h1>Home2</h1>} /> */}
 
       <Switch>
-        <Route path="/new-post" component={NewPost} />
+        {auth && <Route path="/new-post" component={NewPost} />}
         <Route path="/posts" component={Posts} />
         <Redirect from="/" to="/posts" />
         {/* <Route path="/" component={Posts} /> */}
