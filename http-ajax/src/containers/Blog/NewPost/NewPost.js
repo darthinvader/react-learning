@@ -21,14 +21,16 @@ const NewPost = (props) => {
       author: author,
     };
     axios.post("/posts", data).then((response) => {
-      setSubmitted(true);
+      // setSubmitted(true);
+      props.history.push("/posts");
+      // replace does the same except that going "back <-" doesn't take you to this component/page
+      // props.history.replace("/posts");
       console.log(response);
     });
   };
 
   return (
     <div className="NewPost">
-      {submitted && <Redirect to="/posts" />}
       <h1>Add a Post</h1>
       <label>Title</label>
       <input
