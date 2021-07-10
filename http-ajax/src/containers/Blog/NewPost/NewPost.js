@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 import "./NewPost.css";
 
@@ -7,6 +8,7 @@ const NewPost = (props) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [author, setAuthor] = useState("Max");
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     // console.log(props);
@@ -19,12 +21,14 @@ const NewPost = (props) => {
       author: author,
     };
     axios.post("/posts", data).then((response) => {
+      setSubmitted(true);
       console.log(response);
     });
   };
 
   return (
     <div className="NewPost">
+      {submitted && <Redirect to="/posts" />}
       <h1>Add a Post</h1>
       <label>Title</label>
       <input
