@@ -1,6 +1,6 @@
 import React from "react";
 // import axios from "axios";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
 import Posts from "../Posts/Posts";
 import "./Blog.css";
@@ -13,10 +13,18 @@ const Blog = () => {
         <nav>
           <ul>
             <li>
-              <a href="/home">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="/new-post">New Post</a>
+              <Link
+                to={{
+                  pathname: "/new-post",
+                  hash: "#submit",
+                  search: "?quick-submit=true",
+                }}
+              >
+                New Post
+              </Link>
             </li>
           </ul>
         </nav>
