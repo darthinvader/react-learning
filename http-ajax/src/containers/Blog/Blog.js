@@ -44,7 +44,9 @@ const Blog = () => {
       <Switch>
         {auth && <Route path="/new-post" component={NewPost} />}
         <Route path="/posts" component={Posts} />
-        <Redirect from="/" to="/posts" />
+        {/* Catch all route below (404 cases :P) */}
+        <Route render={() => <h1>Not Found!</h1>} />
+        {/* <Redirect from="/" to="/posts" /> */}
         {/* <Route path="/" component={Posts} /> */}
       </Switch>
     </div>
