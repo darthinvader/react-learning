@@ -10,13 +10,17 @@ import { compose, pipe } from "lodash/fp";
 // const transform = pipe(trim, toLowerCase, wrapInDiv);
 // transform(input);
 
-import { Map } from "immutable";
-let book = Map({ title: "Harry Potter" });
+// import { Map } from "immutable";
+import { produce } from "immer";
+
+let book = { title: "Harry Potter" };
 
 function publish(book) {
-  return book.set("isPublished", true);
+  return produce(book, (draftBook) => {
+    draftBook.isPublished = true;
+  });
 }
 
-book = publish(book);
+let updated = publish(book);
 
-console.log(book.toJS());
+console.log(book, updated);
