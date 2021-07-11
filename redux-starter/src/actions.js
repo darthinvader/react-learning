@@ -1,9 +1,15 @@
 import * as actions from "./actionTypes";
 
-export const bugAdded = (description) =>
-  store.dispatch({
-    type: actions.BUG_ADDED,
-    payload: {
-      description,
-    },
-  });
+export const bugAdded = (description) => ({
+  type: actions.BUG_ADDED,
+  payload: {
+    description,
+  },
+});
+
+export const bugResolved = (id) => ({
+  type: actions.BUG_RESOLVE,
+  payload: {
+    id,
+  },
+});
