@@ -1,4 +1,3 @@
-// []
 import * as actions from "./actionTypes";
 let lastId = 0;
 
@@ -22,10 +21,9 @@ export default function reducer(state = [], action) {
     case actions.BUG_RESOLVE:
       console.log("Hello");
       return [
-        ...state.map((bug) => {
-          bug.id === action.payload.id ? (bug.resolved = true) : bug;
-          return bug;
-        }),
+        ...state.map((bug) =>
+          bug.id === action.payload.id ? { ...bug, resolved: true } : bug
+        ),
       ];
     default:
       return state;
