@@ -1,16 +1,10 @@
 import store from "./store";
-import * as actions from "./actionTypes";
-import { bindActionCreators } from "redux";
+import { bugAdded } from "./actions";
 // const unsubscribe = store.subscribe(() => {
 //   console.log("store changed!", store.getState());
 // });
 
-store.dispatch({
-  type: actions.BUG_ADDED,
-  payload: {
-    description: "BUG1",
-  },
-});
+store.dispatch(bugAdded("Bug1"));
 
 // unsubscribe();
 
