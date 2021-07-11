@@ -13,4 +13,4 @@ import { compose, pipe } from "lodash/fp";
 import { Map } from "immutable";
 let book = Map({ title: "Harry Potter" });
 
-console.log(book.get("title"));
+console.log(book.toJS());
