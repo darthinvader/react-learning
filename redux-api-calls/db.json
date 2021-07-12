@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "description": "Bug1",
+      "userId": 1,
+      "resolved": true
+    },
+    {
+      "id": 2,
+      "description": "Bug2",
+      "userId": 2,
+      "resolved": false
+    },
+    {
+      "id": 3,
+      "description": "Bug3",
+      "userId": 1,
+      "resolved": true
+    },
+    {
+      "id": 4,
+      "description": "Bug4",
+      "userId": 1,
+      "resolved": true
+    }
+  ]
+}
