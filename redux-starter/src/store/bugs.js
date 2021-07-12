@@ -1,9 +1,29 @@
-import * as actions from "./actionTypes";
+// Action Types
+const BUG_ADDED = "bugAdded";
+const BUG_REMOVE = "bugRemove";
+const BUG_RESOLVE = "bugResolve";
+
+// Action creators
+export const bugAdded = (description) => ({
+  type: BUG_ADDED,
+  payload: {
+    description,
+  },
+});
+
+export const bugResolved = (id) => ({
+  type: BUG_RESOLVE,
+  payload: {
+    id,
+  },
+});
+
+// Reducer
 let lastId = 0;
 
 export default function reducer(state = [], action) {
   switch (action.type) {
-    case actions.BUG_ADDED:
+    case BUG_ADDED:
       return [
         ...state,
         {
@@ -12,13 +32,13 @@ export default function reducer(state = [], action) {
           resolved: false,
         },
       ];
-    case actions.BUG_REMOVE:
+    case BUG_REMOVE:
       return [
         ...state.filter((bug) => {
           bug.id !== action.payload.id;
         }),
       ];
-    case actions.BUG_RESOLVE:
+    case BUG_RESOLVE:
       console.log("Hello");
       return [
         ...state.map((bug) =>
@@ -28,22 +48,4 @@ export default function reducer(state = [], action) {
     default:
       return state;
   }
-  // if else if way
-  // if (action.type === "bugAdded") {
-  //   return [
-  //     ...state,
-  //     {
-  //       id: ++lastId,
-  //       description: action.payload.description,
-  //       resolved: false,
-  //     },
-  //   ];
-  // } else if (action.type === "bugRemoved") {
-  //   return [
-  //     ...state.filter((bug) => {
-  //       bug.id !== action.payload.id;
-  //     }),
-  //   ];
-  // }
-  // return state;
 }
