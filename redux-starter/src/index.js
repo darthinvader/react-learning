@@ -1,21 +1,15 @@
 import configureStore from "./store/configureStore";
-import * as actions from "./store/project";
-import * as actions2 from "./store/bugs";
-import { createStore } from "redux";
+import { projectAdded } from "./store/project";
+import { bugAdded, bugResolved, getUnresolvedBugs } from "./store/bugs";
 
 const store = configureStore();
 
-// const unsubscribe = store.subscribe(() => {
-//   console.log("store changed!", store.getState());
-// });
+store.dispatch(bugAdded({ description: "Bug1" }));
+store.dispatch(bugAdded({ description: "Bug2" }));
+store.dispatch(bugAdded({ description: "Bug3" }));
+store.dispatch(bugResolved({ id: 3 }));
+store.dispatch(projectAdded({ name: "New Project" }));
 
-store.dispatch(actions2.bugAdded({ description: "Bug1" }));
-store.dispatch(actions2.bugAdded({ description: "Bug2" }));
-store.dispatch(actions2.bugAdded({ description: "Bug3" }));
-store.dispatch(actions2.bugResolved({ id: 3 }));
-// console.log(store.getState());
+const unresolvedBugs = getUnresolvedBugs(store.getState());
 
-// console.log(store.getState());
-
-store.dispatch(actions.projectAdded({ name: "New Project" }));
-console.log(store.getState());
+console.log(unresolvedBugs);
