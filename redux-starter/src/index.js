@@ -30,12 +30,18 @@ import { userAdded } from "./store/users";
 // const store = createStore(reducer, applyMiddleware(logger));
 
 // Dispatching Functions
-const store = configureStore();
+// const store = configureStore();
 
-store.dispatch((dispatch, getState) => {
-  // Call an API
-  // When promise is resolved => dispatch()
-  dispatch({ type: "bug", bugs: [1, 2, 3] });
-  console.log(getState());
-  // If promise is Rejected => dispatch()
+// store.dispatch((dispatch, getState) => {
+//   // Call an API
+//   // When promise is resolved => dispatch()
+//   dispatch({ type: "bug", bugs: [1, 2, 3] });
+//   console.log(getState());
+//   // If promise is Rejected => dispatch()
+// });
+
+const store = configureStore();
+store.dispatch({
+  type: "error",
+  payload: { message: "An error occured" },
 });
