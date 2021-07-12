@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
 import { apiCallBegan } from "./api";
-
-let lastId = 0;
+import moment from "moment";
 
 const slice = createSlice({
   name: "bugs",
@@ -30,11 +29,7 @@ const slice = createSlice({
       bugs[index].userId = userId;
     },
     bugAdded: (bugs, action) => {
-      bugs.list.push({
-        id: ++lastId,
-        description: action.payload.description,
-        resolved: false,
-      });
+      bugs.list.push(action.payload);
     },
     bugResolved: (bugs, action) => {
       const index = bugs.list.findIndex((bug) => bug.id === action.payload.id);
@@ -65,12 +60,10 @@ export const getUnresolvedBugs = createSelector(
 const url = "/bugs";
 
 // ()=>fn(dispatch, getState)
-
 export const loadBugs = () => (dispatch, getState) => {
   const { lastFetch } = getState().entities.bugs;
   console.log(lastFetch);
   const diffInMinutes = moment().diff(moment(lastFetch, "minutes"));
-
   if (diffInMinutes < 10) return;
   dispatch(
     apiCallBegan({
@@ -81,6 +74,14 @@ export const loadBugs = () => (dispatch, getState) => {
     })
   );
 };
+
+export const addBug = (bug) =>
+  apiCallBegan({
+    url,
+    method: "post",
+    data: bug,
+    onSuccess: bugAdded.type,
+  });
 
 export const getBugsByUser = (userId) =>
   createSelector(
