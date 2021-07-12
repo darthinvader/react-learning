@@ -21,3 +21,10 @@ store.dispatch(projectAdded({ name: "New Project" }));
 
 console.log(store.getState());
 console.log(getBugsByUser(2)(store.getState()));
+
+// example without redux toolkit
+// import { createStore, applyMiddleware } from "redux";
+// import reducer from "./store/reducer";
+// import logger from "./store/middleware/logger";
+
+// const store = createStore(reducer, applyMiddleware(logger));
