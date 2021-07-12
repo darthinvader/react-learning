@@ -5,6 +5,7 @@ import {
   bugResolved,
   bugAssignedToUser,
   getBugsByUser,
+  loadBugs,
 } from "./store/bugs";
 import { userAdded } from "./store/users";
 import * as actions from "./store/api";
@@ -42,10 +43,4 @@ import * as actions from "./store/api";
 // });
 
 const store = configureStore();
-
-store.dispatch(
-  actions.apiCallBegan({
-    url: "/bugs",
-    onSuccess: "bugsReceived",
-  })
-);
+store.dispatch(loadBugs());
