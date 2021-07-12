@@ -13,7 +13,7 @@ const slice = createSlice({
   reducers: {
     bugAssignedToUser: (bugs, action) => {
       const { bugId, userId } = action.payload;
-      const index = bugs.findIndex((bug) => bug.id === bugId);
+      const index = bugs.list.findIndex((bug) => bug.id === bugId);
       bugs[index].userId = userId;
     },
     bugAdded: (bugs, action) => {
