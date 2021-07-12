@@ -1,5 +1,6 @@
 import configureStore from "./store/configureStore";
 import * as actions from "./store/project";
+import * as actions2 from "./store/bugs";
 import { createStore } from "redux";
 
 const store = configureStore();
@@ -8,10 +9,10 @@ const store = configureStore();
 //   console.log("store changed!", store.getState());
 // });
 
-// store.dispatch(actions.bugAdded({ description: "Bug1" }));
-// store.dispatch(actions.bugAdded({ description: "Bug2" }));
-// store.dispatch(actions.bugAdded({ description: "Bug3" }));
-// store.dispatch(actions.bugResolved({ id: 3 }));
+store.dispatch(actions2.bugAdded({ description: "Bug1" }));
+store.dispatch(actions2.bugAdded({ description: "Bug2" }));
+store.dispatch(actions2.bugAdded({ description: "Bug3" }));
+store.dispatch(actions2.bugResolved({ id: 3 }));
 // console.log(store.getState());
 
 // console.log(store.getState());
