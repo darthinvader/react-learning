@@ -7,6 +7,7 @@ import {
   getBugsByUser,
 } from "./store/bugs";
 import { userAdded } from "./store/users";
+import * as actions from "./store/api";
 
 // const store = configureStore();
 
@@ -41,11 +42,10 @@ import { userAdded } from "./store/users";
 // });
 
 const store = configureStore();
-store.dispatch({
-  type: "apiCallBegan",
-  payload: {
+
+store.dispatch(
+  actions.apiCallBegan({
     url: "/bugs",
     onSuccess: "bugsReceived",
-    onError: "apiRequestFailed",
-  },
-});
+  })
+);
