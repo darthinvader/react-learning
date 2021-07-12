@@ -13,7 +13,7 @@ const api =
 
     try {
       const response = await axios.request({
-        baseURL: "http://localhost:3001",
+        baseURL: "http://localhost:3000",
         url,
         method,
         data,
