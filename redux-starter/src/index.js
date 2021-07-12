@@ -8,10 +8,10 @@ const unsubscribe = store.subscribe(() => {
   console.log("store changed!", store.getState());
 });
 
-store.dispatch(actions.bugAdded("Bug1"));
-store.dispatch(actions.bugAdded("Bug2"));
-store.dispatch(actions.bugAdded("Bug3"));
-store.dispatch(actions.bugResolved(3));
+store.dispatch(actions.bugAdded({ description: "Bug1" }));
+store.dispatch(actions.bugAdded({ description: "Bug2" }));
+store.dispatch(actions.bugAdded({ description: "Bug3" }));
+store.dispatch(actions.bugResolved({ id: 3 }));
 console.log(store.getState());
 
 console.log(store.getState());
