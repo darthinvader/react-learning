@@ -12,4 +12,8 @@ store.dispatch(projectAdded({ name: "New Project" }));
 
 const unresolvedBugs = getUnresolvedBugs(store.getState());
 
+const unresolvedBugs2 = getUnresolvedBugs(store.getState());
+
+console.log(unresolvedBugs === unresolvedBugs2);
+
 console.log(unresolvedBugs);
